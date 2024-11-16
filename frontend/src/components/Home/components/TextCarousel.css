@@ -1,0 +1,51 @@
+/* components/TextCarousel.css */
+
+@keyframes slides {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .logos {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .logos::before,
+  .logos::after {
+    position: absolute;
+    top: 0;
+    content: '';
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .logos::before {
+    left: 0;
+
+  }
+  
+  .logos::after {
+    right: 0;
+   
+  }
+  
+  .logo_items {
+    display: flex;
+    animation: 35s slides infinite linear;
+  }
+  
+  .logos:hover .logo_items {
+    animation-play-state: paused;
+  }
+  
+  .logo_text {
+    font-size: 1rem; /* Adjust as needed */
+
+  }
+  
