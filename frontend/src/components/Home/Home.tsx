@@ -1,9 +1,7 @@
 
-import { Upload } from 'lucide-react' 
 import VideoPlayer from './components/VideoPlayer'
 import TextCarousel from './components/TextCarousel';
 import { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
 import PDFUploader from './components/PdfUploader';
 export default function Home() {
 
@@ -24,16 +22,15 @@ export default function Home() {
     formData.append('pdf', file);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/upload/', {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/upload/`, {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Upload Response:', data);
         const timestamp = new Date().getTime();
-        setVideoUrl(`http://127.0.0.1:8000${data.video_url}?t=${timestamp}`);
+        setVideoUrl(`${process.env.BACKEND_URL}${data.video_url}?t=${timestamp}`);
       } else {
         // Handle error
         console.error('Failed to upload file.');
