@@ -1,5 +1,5 @@
 import './styles/App.css'
-import Home from './components/Home/components/Home'
+import Home from './components/Home/Home'
 import { ThemeProvider } from './components/theme-provider'
 import Header from './components/ui/header'
 

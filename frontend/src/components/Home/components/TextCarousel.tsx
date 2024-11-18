@@ -1,11 +1,13 @@
-
-import PropTypes from 'prop-types';
-import './TextCarousel.css'; // We'll create this CSS file next
+import './TextCarousel.css'; 
 import { CircleCheck } from 'lucide-react';
 
+interface TextCarouselProps {
+  items: string[];
+  animationDuration?: number;
+}
 
 
-const TextCarousel = ({ items, animationDuration = 35 }) => {
+const TextCarousel: React.FC<TextCarouselProps> = ({ items, animationDuration = 35 }) => {
     return (
       <div className="logos">
         <div className="logo_items" style={{ animationDuration: `${animationDuration}s` }}>
@@ -30,10 +32,5 @@ const TextCarousel = ({ items, animationDuration = 35 }) => {
       </div>
     );
   };
-
-TextCarousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  animationDuration: PropTypes.number,
-};
 
 export default TextCarousel;
