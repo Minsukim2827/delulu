@@ -22,7 +22,7 @@ export default function Home() {
     formData.append('pdf', file);
 
     try {
-      const response = await fetch(`${process.env.BACKEND_URL}/api/upload/`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/upload/`, {
         method: 'POST',
         body: formData,
       });
@@ -30,7 +30,7 @@ export default function Home() {
       if (response.ok) {
         const data = await response.json();
         const timestamp = new Date().getTime();
-        setVideoUrl(`${process.env.BACKEND_URL}${data.video_url}?t=${timestamp}`);
+        setVideoUrl(`${import.meta.env.VITE_BACKEND_URL}${data.video_url}?t=${timestamp}`);
       } else {
         // Handle error
         console.error('Failed to upload file.');
